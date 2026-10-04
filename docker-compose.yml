@@ -1,0 +1,11 @@
+# Admin panel: http://<server-ip>:8090  (keep it on the internal network)
+# API_UPSTREAM = where the Loan API answers, as seen from this container.
+services:
+  admin:
+    build: .
+    restart: unless-stopped
+    environment:
+      API_UPSTREAM: ${API_UPSTREAM:-http://192.168.2.93:80}
+      MAX_UPLOAD_SIZE: 20m
+    ports:
+      - "8090:80"

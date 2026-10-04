@@ -1,0 +1,7 @@
+body { background: var(--mantine-color-gray-0); }
+[data-mantine-color-scheme='dark'] body { background: var(--mantine-color-dark-8); }
+.clickable-row { cursor: pointer; }
+.clickable-row:hover { background: var(--mantine-color-blue-light); }
+.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85em; }
+td.mono { white-space: nowrap; }
