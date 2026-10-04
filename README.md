@@ -25,11 +25,15 @@ cd loan_admin
 docker compose up -d --build
 ```
 
-Open `http://<server-ip>:8090`. The container's nginx serves the panel and forwards `/api/`
+The panel listens on host port **443** (plain HTTP); the firewall forwards
+`smartfinance.az:42410` to it, so open `http://smartfinance.az:42410`
+(inside the office: `http://192.168.2.93:443`). The container's nginx serves the panel and forwards `/api/`
 to the Loan API at `API_UPSTREAM` (default `http://192.168.2.93:80`). Change it with
 `API_UPSTREAM=http://10.0.0.5:80 docker compose up -d`.
 
-**Keep the panel internal**: don't port-forward 8090 to the internet; use it from the office network or VPN.
+**Security**: the panel is reachable from the internet, so use strong passwords for every admin
+account, keep the number of admin-role users small, and ideally allow port 42410 only from your
+office/VPN IPs on the firewall. Add HTTPS before real customer data is managed through it.
 
 First admin account (on the API server, once):
 

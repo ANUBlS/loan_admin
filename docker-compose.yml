@@ -1,4 +1,6 @@
-# Admin panel: http://<server-ip>:8090  (keep it on the internal network)
+# Admin panel on host port 443 (plain HTTP).
+# The firewall forwards smartfinance.az:42410 -> 192.168.2.93:443,
+# so the panel opens at http://smartfinance.az:42410
 # API_UPSTREAM = where the Loan API answers, as seen from this container.
 services:
   admin:
@@ -8,4 +10,4 @@ services:
       API_UPSTREAM: ${API_UPSTREAM:-http://192.168.2.93:80}
       MAX_UPLOAD_SIZE: 20m
     ports:
-      - "8090:80"
+      - "443:80"
